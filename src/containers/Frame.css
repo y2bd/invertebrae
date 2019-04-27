@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Mr Pixel";
+  src: url(../ass/terminal-grotesque.ttf) format("truetype");
+}
+
+.Frame {
+  width: 1120px;
+  height: 780px;
+  padding: 32px;
+
+  font-family: "Mr Pixel", "Comic Sans MS";
+  font-size: 2rem;
+  font-weight: 200;
+  letter-spacing: 0.04em;
+  line-height: 1.4em;
+  color: #c9a058;
+
+  overflow-y: scroll;
+
+  outline-color: #c9a058;
+  outline-width: 1px;
+  outline-style: solid;
+
+  filter: drop-shadow(0px 8px 4px #593008);
+
+  scrollbar-width: none;
+}
+
+.Frame::-webkit-scrollbar {
+  display: none;
+}

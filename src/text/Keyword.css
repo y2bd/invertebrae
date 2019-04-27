@@ -1,0 +1,12 @@
+.Keyword {
+  cursor: pointer;
+  display: inline-block;
+
+  transition: transform 0.2s ease;
+}
+
+.Keyword:hover {
+  transform: scale(1.1);
+
+  transition: transform 0.2s ease;
+}
