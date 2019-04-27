@@ -1,9 +1,13 @@
 import React from "react";
+import { DragDropContextProvider } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
 import "./App.css";
 import Frame from "./containers/Frame";
-import Phrase from "./text/Phrase";
+import Prompt from "./containers/Prompt";
+import Wordbank from "./containers/Wordbank";
 import Keyword from "./text/Keyword";
 import Paragraph from "./text/Paragraph";
+import Phrase from "./text/Phrase";
 import { Finishable } from "./text/Text";
 
 const phrase = (text: string) => (props: Finishable) => (
@@ -11,7 +15,7 @@ const phrase = (text: string) => (props: Finishable) => (
 );
 
 const keyword = (text: string) => (props: Finishable) => (
-  <Keyword text={text} onFinish={props.onFinish} />
+  <Keyword text={text} location={"story"} onFinish={props.onFinish} />
 );
 
 const paragraph = (texts: Array<React.ComponentType<Finishable>>) => (
@@ -21,17 +25,33 @@ const paragraph = (texts: Array<React.ComponentType<Finishable>>) => (
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Frame>
-        {paragraph([
-          phrase(
-            "you are walking down a long hallway. at the end stands a tall "
-          ),
-          keyword("door"),
-          phrase(". the path behind you is "),
-          keyword("close"),
-          phrase("d.")
-        ])({ onFinish: () => console.log("Finish") })}
-      </Frame>
+      <DragDropContextProvider backend={HTML5Backend}>
+        <Frame>
+          {paragraph([
+            paragraph([
+              phrase(
+                "you are walking down a long hallway. at the end stands a tall "
+              ),
+              keyword("door"),
+              phrase(". the path behind you is "),
+              keyword("close"),
+              phrase("d.")
+            ]),
+            paragraph([
+              phrase(
+                "you are walking down a long hallway. at the end stands a tall "
+              ),
+              keyword("door"),
+              phrase(". the path behind you is "),
+              keyword("close"),
+              phrase("d.")
+            ])
+          ])({ onFinish: () => console.log("Finish") })}
+          <Prompt />
+        </Frame>
+        <Wordbank />
+      </DragDropContextProvider>
+      ]
     </div>
   );
 };

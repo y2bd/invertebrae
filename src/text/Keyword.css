@@ -1,12 +1,17 @@
 .Keyword {
-  cursor: pointer;
+  cursor: grab;
   display: inline-block;
 
   transition: transform 0.2s ease;
 }
 
 .Keyword:hover {
-  transform: scale(1.1);
+  transform: translate(0, -1px) scale(1.1);
 
   transition: transform 0.2s ease;
+}
+
+.Keyword.consumed {
+  color: #c9a05899;
+  cursor: inherit;
 }

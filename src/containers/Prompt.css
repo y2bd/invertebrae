@@ -1,0 +1,31 @@
+.Prompt {
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 8px;
+
+  overflow: hidden;
+
+  border-color: #c9a058;
+  border-bottom-width: 1px;
+  border-style: solid;
+
+  margin-top: auto;
+
+  transition: background-color 0.2s ease;
+}
+
+.Prompt.hovering {
+  background: #c9a05811;
+
+  transition: background-color 0.2s ease;
+}
+
+.Prompt .Symbol {
+  font-size: 48px;
+  margin-right: 16px;
+  vertical-align: top;
+}
+
+.Prompt .Keyword {
+  margin-right: 8px;
+}
