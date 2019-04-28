@@ -7,6 +7,7 @@ import "./Keyword.css";
 interface KeywordProps extends Finishable {
   readonly text: string;
   readonly location: "story" | "puzzle" | "wordbank";
+  readonly fast?: boolean;
 
   readonly onConsumed?: (consumedText: string) => void;
 }
@@ -24,7 +25,7 @@ export interface KeywordDragProps {
 }
 
 const Keyword: React.FC<KeywordProps> = React.memo(props => {
-  const [renderText] = useTyping(props.text, props.onFinish);
+  const [renderText] = useTyping(props.text, props.onFinish, props.fast);
   const [consumed, setConsumed] = React.useState(false);
 
   return (

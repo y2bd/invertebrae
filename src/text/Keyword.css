@@ -1,5 +1,5 @@
 .Keyword {
-  cursor: grab;
+  cursor: move;
   display: inline-block;
 
   transition: transform 0.2s ease;

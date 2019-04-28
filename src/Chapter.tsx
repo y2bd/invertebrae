@@ -12,12 +12,12 @@ interface ChapterProps {
     readonly onNavigate: (chapterName: string) => void;
 }
 
-const phrase = (text: string) => (props: Finishable) => (
-    <Phrase text={text} onFinish={props.onFinish} />
+const phrase = (text: string, fast?: boolean) => (props: Finishable) => (
+    <Phrase text={text} fast={fast} onFinish={props.onFinish} />
 );
 
-const keyword = (text: string) => (props: Finishable) => (
-    <Keyword text={text} location={"story"} onFinish={props.onFinish} />
+const keyword = (text: string, fast?: boolean) => (props: Finishable) => (
+    <Keyword text={text} fast={fast} location={"story"} onFinish={props.onFinish} />
 );
 
 const paragraph = (texts: Array<React.ComponentType<Finishable>>, key: string | number) => (
@@ -33,7 +33,7 @@ const Chapter: React.FC<ChapterProps> = React.memo(({ chapter, onNavigate }) => 
             // all odd numbered indexes will be keywords
             // means that brackets are not allowed in the story
             const phrases = line.split(/[\[\]]/).map((text, i) => {
-                return (i % 2 === 1 ? keyword : phrase)(text);
+                return (i % 2 === 1 ? keyword : phrase)(text, chapter.fast);
             })
 
             return paragraph(phrases, idx);

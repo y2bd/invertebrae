@@ -19,6 +19,9 @@ const App: React.FC = () => {
   const pushNewChapter = React.useCallback((chapterName: string) => {
     const nextUp = chapterQueue[chapterCursor + 1];
     if (nextUp) {
+      // TODO ALLOW PRESERVATION OF FUTURE
+      // SCAN FORWARD
+      // PERHAPS SWITCH TO LINKED LIST/MAP
       if (nextUp !== chapterName) {
         setChapterQueue(chapterQueue.slice(0, chapterCursor + 1).concat(chapterName));
       }

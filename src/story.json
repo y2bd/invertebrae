@@ -79,8 +79,8 @@
             "name": "return-home",
             "body": [
                 "you are home.",
-                "you immediately throw your bag down onto the floor, and your sweater onto the pile laundry amassing in your bathroom. you've lived here for months, you should probably buy a hamper already. there are many things you have no time for.",
-                "what you do have [time] for, however, is your [computer]",
+                "you immediately throw your bag down onto the floor, and your sweater onto the pile of laundry amassing in your bathroom. you've lived here for months, you should probably buy a hamper already. there are many things you have no time for.",
+                "what you do have [time] for, however, is your [computer].",
                 "but where is it?"
             ],
             "solutions": [
@@ -97,7 +97,7 @@
             "name": "outbox-pending",
             "body": [
                 "your laptop is in the kitchen. you had some emails to [read] while making coffee. they aren't work-related, not really any way.",
-                "your computer takes several minutes to boot. it's quite old, and wasn't even new when you had bought it. you should probably [buy] a new computer already.",
+                "your computer takes several minutes to boot. it's quite old, and wasn't even new when you had bought it. you should probably buy a new computer already.",
                 "computers are expensive. that's fine though, you'll have the money for one soon enough.",
                 "after it boots, you open your [email] client. at the top of your inbox is a new email. it's the one you've been waiting for."
             ],
@@ -107,9 +107,69 @@
                         "read",
                         "email"
                     ],
-                    "next": "outbox-pending"
+                    "next": "the-letter"
                 }
             ]
+        },
+        "the-letter": {
+            "name": "the-letter",
+            "body": [
+                "\"we have received the documents you sent us earlier today. they're currently being re[view]ed, but we're fairly certain they're what we've been looking for.",
+                "we appreciate you securing these documents for us. likewise, we will uphold our end of the deal.",
+                "please open the provided [attachment]. it will contain more details for the money transfer.",
+                "",
+                "i n v e r t e b r a e\"",
+                "...",
+                "wow, it really worked. what a relief."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "view",
+                        "attachment"
+                    ],
+                    "next": "the-details"
+                }
+            ]
+        },
+        "the-details": {
+            "name": "the-details",
+            "body": [
+                "this is not what happened before ths is not what happened beore this is not wat happened before this is not hat happeed befoe this is not what happeed before this is not what hapened befre this is not what hppened beore this is not what happened before this is not what haened before this i not what hapened before ths is not what happend before ths is not what hapened [before] this is not what hapned before this is not what happened bere this is not wt happned befoe ts is not what hapned before this is not what appened befre tis is not what hapened before this is not wat happened before this is not what happened before this is not what happened before this is nt what hppened before this is not what hapned before this is not what happened bere this is not wt happned befoe ts is not what hapned before this is not what appened befre tis is not what hapened before this is not wat happened before this is not what happened before this is not what happe" 
+            ],
+            "fast": true,
+            "solutions": [
+                {
+                    "answer": [
+                        "close"
+                    ],
+                    "next": "the-bad-end"
+                }
+            ]
+        },
+        "the-bad-end": {
+            "name": "the-bad-end",
+            "body": [
+                "wait, what?",
+                "after the barrage, your computer shuts down. you're not able to turn it back on.",
+                "the next morning, you receive two phone calls. one from your work's hr department, and another from your bank. neither have very pleasant news.",
+                "this is definitely not what you expected on that [subway] ride home. you were looking for an ending, but not this one."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "figures"
+                    ],
+                    "next": "nice"
+                }
+            ]
+        },
+        "nice": {
+            "name": "nice",
+            "body": [
+                "yeah, doesn't it."
+            ],
+            "solutions": []
         }
     }
 }

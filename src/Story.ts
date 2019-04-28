@@ -8,6 +8,7 @@ export interface Story {
 export interface Chapter {
     readonly name: string;
     readonly entryConditions?: string[];
+    readonly fast?: boolean;
     readonly body: string[];
     readonly solutions: Solution[];
 }
