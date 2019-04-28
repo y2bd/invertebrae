@@ -4,12 +4,13 @@ import "./Paragraph.css";
 
 interface ParagraphProps extends Finishable {
   readonly texts: Array<React.ComponentType<Finishable>>;
+  readonly fast?: boolean;
 
   onFinish(): void;
 }
 
 const Paragraph: React.FC<ParagraphProps> = React.memo(
-  ({ texts, onFinish }) => {
+  ({ fast, texts, onFinish }) => {
     const [textIndex, setTextIndex] = React.useState(0);
     const [finished, setFinished] = React.useState(false);
 
@@ -28,7 +29,7 @@ const Paragraph: React.FC<ParagraphProps> = React.memo(
 
     return (
       <div className="Paragraph">
-        {texts.slice(0, textIndex + 1).map((Comp, i) => (
+        {texts.slice(0, fast ? texts.length : textIndex + 1).map((Comp, i) => (
           <Comp key={i} onFinish={progress} />
         ))}
       </div>

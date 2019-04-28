@@ -4,7 +4,7 @@
         "welcome": {
             "name": "welcome",
             "body": [
-                "it is july 14th, 2013. the sun had [set] a while ago.",
+                "it is july 14th, 2013.",
                 "you just got off of work, and are taking the subway back to your apartment. there aren't many people on your train car. this isn't uncommon, as your line travels far from the city.",
                 "your [watch] says the time is 6:13pm. last week you had flown back from a work trip, and lazily put off adjusting it for the time-zone change.",
                 "you should probably do that."
@@ -16,6 +16,13 @@
                         "watch"
                     ],
                     "next": "adjust"
+                },
+                {
+                    "answer": [
+                        "before",
+                        "subway"
+                    ],
+                    "next": "a-priori"
                 }
             ]
         },
@@ -135,7 +142,16 @@
         "the-details": {
             "name": "the-details",
             "body": [
-                "this is not what happened before ths is not what happened beore this is not wat happened before this is not hat happeed befoe this is not what happeed before this is not what hapened befre this is not what hppened beore this is not what happened before this is not what haened before this i not what hapened before ths is not what happend before ths is not what hapened [before] this is not what hapned before this is not what happened bere this is not wt happned befoe ts is not what hapned before this is not what appened befre tis is not what hapened before this is not wat happened before this is not what happened before this is not what happened before this is nt what hppened before this is not what hapned before this is not what happened bere this is not wt happned befoe ts is not what hapned before this is not what appened befre tis is not what hapened before this is not wat happened before this is not what happened before this is not what happe" 
+                "this is not what happened before ths is not what happened beo",
+                "re this is not wat happened before this is not hat happeed befoe th",
+                "is is not what happeed before this is not what hapened befre this is not what hppened beore this is not what happened before this is not what haened befo",
+                "re this i not what hapened befo",
+                "re ths is not what happend before ths is not what hapened [before] this is not what hapn",
+                "ed before this is not what happened bere this is not wt happned befoe ts is not what hapned before this is not what appened befre tis is not what hapened before this is not wat happened befo",
+                "re this is not what happened before this is not what happ",
+                "ened before this is nt what hppened before this is not what hapned before this is not what happened bere this is not wt happned befoe ts is not what hapned before this is not what appened befre tis is not w",
+                "hat hapened before this is not wat happened before thi",
+                "s is not what happened before this is not what happe" 
             ],
             "fast": true,
             "solutions": [
@@ -170,6 +186,21 @@
                 "yeah, doesn't it."
             ],
             "solutions": []
+        },
+        "a-priori": {
+            "name": "a-priori",
+            "body": [
+                "run set watch again"
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "set",
+                        "watch"
+                    ],
+                    "next": "adjust"
+                }
+            ]
         }
     }
 }

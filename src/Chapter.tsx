@@ -20,15 +20,15 @@ const keyword = (text: string, fast?: boolean) => (props: Finishable) => (
     <Keyword text={text} fast={fast} location={"story"} onFinish={props.onFinish} />
 );
 
-const paragraph = (texts: Array<React.ComponentType<Finishable>>, key: string | number) => (
+const paragraph = (texts: Array<React.ComponentType<Finishable>>, key: string | number, fast?: boolean) => (
     props: Finishable
-) => <Paragraph texts={texts} onFinish={props.onFinish} />;
+) => <Paragraph texts={texts} fast={fast} onFinish={props.onFinish} />;
 
 const Chapter: React.FC<ChapterProps> = React.memo(({ chapter, onNavigate }) => {
     const noop = React.useCallback(() => void 0, []);
 
     const processedStory = React.useMemo(() => {
-        const body = chapter.body.map((line, idx) => {
+        const body = chapter.body.flatMap((line, idx) => {
             // split to get the keywords in [brackets]
             // all odd numbered indexes will be keywords
             // means that brackets are not allowed in the story
@@ -36,10 +36,10 @@ const Chapter: React.FC<ChapterProps> = React.memo(({ chapter, onNavigate }) => 
                 return (i % 2 === 1 ? keyword : phrase)(text, chapter.fast);
             })
 
-            return paragraph(phrases, idx);
+            return chapter.fast ? phrases : [paragraph(phrases, idx, chapter.fast)];
         });
 
-        return paragraph(body, chapter.name)({ onFinish: noop });
+        return paragraph(body, chapter.name, chapter.fast)({ onFinish: noop });
     }, [chapter, noop])
 
     return <>

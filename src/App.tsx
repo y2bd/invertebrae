@@ -7,38 +7,60 @@ import { loadStory } from "./Story";
 
 const story = loadStory();
 
+interface ChapterNode {
+  readonly chapterName: string;
+  readonly beforeName: string | null;
+}
+
+interface ChapterGraph {
+  [chapterName: string]: ChapterNode;
+}
+
 const App: React.FC = () => {
-  const [chapterQueue, setChapterQueue] = React.useState([story.start]);
-  const [chapterCursor, setChapterCursor] = React.useState(0);
+  const [chapterGraph, setChapterGraph] = React.useState<ChapterGraph>({
+    [story.start]: {
+      chapterName: story.start,
+      beforeName: null
+    },
+  })
+
+  const [chapterPointer, setChapterPointer] = React.useState(story.start);
+
   const [showHelp, setShowHelp] = React.useState(false);
 
-  const canGoBefore = chapterCursor > 0;
-
-  const currentChapter = chapterQueue[chapterCursor];
+  const currentChapter = chapterGraph[chapterPointer];
+  const canGoBefore = currentChapter.beforeName !== null;
 
   const pushNewChapter = React.useCallback((chapterName: string) => {
-    const nextUp = chapterQueue[chapterCursor + 1];
-    if (nextUp) {
-      // TODO ALLOW PRESERVATION OF FUTURE
-      // SCAN FORWARD
-      // PERHAPS SWITCH TO LINKED LIST/MAP
-      if (nextUp !== chapterName) {
-        setChapterQueue(chapterQueue.slice(0, chapterCursor + 1).concat(chapterName));
-      }
+    let nextUp = chapterGraph[chapterName];
+    if (!nextUp) {
+      nextUp = {
+        chapterName,
+        beforeName: chapterPointer
+      };
     } else {
-      setChapterQueue(chapterQueue.concat(chapterName));
+      nextUp = {
+        ...nextUp,
+        beforeName: chapterPointer
+      };
     }
 
-    setChapterCursor(chapterCursor + 1);
-  }, [chapterQueue, chapterCursor, setChapterQueue, setChapterCursor]);
+    const newChapterGraph = {
+      ...chapterGraph,
+      [chapterName]: nextUp
+    };
+
+    setChapterGraph(newChapterGraph);
+    setChapterPointer(chapterName);
+  }, [chapterPointer, setChapterPointer, chapterGraph, setChapterGraph]);
 
   const goBefore = React.useCallback(() => {
     if (!canGoBefore) {
       return;
     }
 
-    setChapterCursor(chapterCursor - 1);
-  }, [canGoBefore, chapterCursor, setChapterCursor])
+    setChapterPointer(currentChapter.beforeName!);
+  }, [canGoBefore, currentChapter, setChapterPointer])
 
   const onHelp = React.useCallback(() => {
     setShowHelp(true);
@@ -66,9 +88,9 @@ const App: React.FC = () => {
           </span>
         </div>
         { /* We render all chapters in queue to keep them in memory */ }
-        {(chapterQueue.map(chapterName => (
+        {(Object.keys(chapterGraph).map(chapterName => (
           <div key={chapterName} style={{ 
-            display: chapterName === currentChapter ? "flex" : "none",
+            display: chapterName === currentChapter.chapterName ? "flex" : "none",
             flexDirection: "column",
             height: "100%", 
           }}>

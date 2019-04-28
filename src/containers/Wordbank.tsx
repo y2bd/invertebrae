@@ -8,7 +8,7 @@ import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } 
 
 type State = typeof initialState;
 const initialState = {
-  words: ["close"] as string[]
+  words: ["set", "close"] as string[]
 };
 
 type Action =
