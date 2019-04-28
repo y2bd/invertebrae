@@ -5,8 +5,9 @@
 
 .Frame {
   width: 1020px;
-  height: 780px;
+  height: 740px;
   padding: 32px;
+  padding-top: 64px;
 
   font-family: "Mr Pixel", "Comic Sans MS";
   font-size: 2rem;
@@ -20,8 +21,6 @@
   outline-color: #c9a058;
   outline-width: 1px;
   outline-style: solid;
-
-  filter: drop-shadow(0px 8px 4px #593008);
 
   scrollbar-width: none;
 

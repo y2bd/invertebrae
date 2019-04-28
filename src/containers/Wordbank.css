@@ -5,8 +5,9 @@
 
 .Wordbank {
   width: 120px;
-  height: 780px;
+  height: 740px;
   padding: 32px;
+  padding-top: 64px;
   margin-left: 32px;
 
   font-family: "Mr Pixel", "Comic Sans MS";
@@ -21,8 +22,6 @@
   outline-color: #c9a058;
   outline-width: 1px;
   outline-style: solid;
-
-  filter: drop-shadow(0px 8px 4px #593008);
 
   scrollbar-width: none;
 

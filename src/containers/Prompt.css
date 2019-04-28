@@ -12,6 +12,8 @@
   margin-top: auto;
 
   transition: background-color 0.2s ease;
+
+  display: flex;
 }
 
 .Prompt.hovering {
@@ -29,3 +31,33 @@
 .Prompt .Keyword {
   margin-right: 8px;
 }
+
+.Prompt .OK {
+  display: inline-block;
+  padding: 0 8px;
+  margin-left: auto;
+
+  background: black;
+
+  border-color: #c9a058;
+  border-width: 1px;
+  border-style: solid;
+
+  opacity: 0.4;
+
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.Prompt .OK.activated {
+  cursor: pointer;
+  opacity: 1.0;
+}
+
+.Prompt .OK.activated:hover {
+  background: #c9a05822;
+}
+
+.Prompt .OK.activated:active, .Prompt .OK.activated:active {
+  background: #c9a05844;
+}
+

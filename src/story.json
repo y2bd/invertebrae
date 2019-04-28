@@ -1,0 +1,115 @@
+{
+    "start": "welcome",
+    "chapters": {
+        "welcome": {
+            "name": "welcome",
+            "body": [
+                "it is july 14th, 2013. the sun had [set] a while ago.",
+                "you just got off of work, and are taking the subway back to your apartment. there aren't many people on your train car. this isn't uncommon, as your line travels far from the city.",
+                "your [watch] says the time is 6:13pm. last week you had flown back from a work trip, and lazily put off adjusting it for the time-zone change.",
+                "you should probably do that."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "set",
+                        "watch"
+                    ],
+                    "next": "adjust"
+                }
+            ]
+        },
+        "adjust": {
+            "name": "adjust",
+            "body": [
+                "you welcome your watch back home, adjusting it fowards to 9:13pm. you don't normally [find] yourself at work this late, but today though, it made sense. honestly, maybe you're lucky to leave even this late.",
+                "coincidentally, the subway reaches your stop fifteen minutes a[head] of schedule. you exit the station and begin walking [home]."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "head",
+                        "home"
+                    ],
+                    "next": "doorstep"
+                }
+            ]
+        },
+		"doorstep": {
+            "name": "doorstep",
+            "body": [
+                "arriving at your apartment, you hear the mew of your neighbor's [cat], pawing at the building's front [door]. the landlord has pretty relaxed rules on [pet]s, which leads to your neighbor letting their cat roam the premises.",
+                "how the cat manages to get outside so often is a mystery. maybe it's finding an [open] window.",
+                "you should probably go inside."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "pet",
+                        "cat"
+                    ],
+                    "next": "cat-lover"
+                },
+                {
+                    "answer": [
+                        "open",
+                        "door"
+                    ],
+                    "next": "return-home"
+                }
+            ]
+        },
+        "cat-lover": {
+            "name": "cat-lover",
+            "body": [
+                "you lean over to pet the cat. noticing you approaching, it hisses away. ah well, [figures].",
+                "at least it's no longer blocking the door."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "open",
+                        "door"
+                    ],
+                    "next": "return-home"
+                }
+            ]
+        },
+        "return-home": {
+            "name": "return-home",
+            "body": [
+                "you are home.",
+                "you immediately throw your bag down onto the floor, and your sweater onto the pile laundry amassing in your bathroom. you've lived here for months, you should probably buy a hamper already. there are many things you have no time for.",
+                "what you do have [time] for, however, is your [computer]",
+                "but where is it?"
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "find",
+                        "computer"
+                    ],
+                    "next": "outbox-pending"
+                }
+            ]
+        },
+        "outbox-pending": {
+            "name": "outbox-pending",
+            "body": [
+                "your laptop is in the kitchen. you had some emails to [read] while making coffee. they aren't work-related, not really any way.",
+                "your computer takes several minutes to boot. it's quite old, and wasn't even new when you had bought it. you should probably [buy] a new computer already.",
+                "computers are expensive. that's fine though, you'll have the money for one soon enough.",
+                "after it boots, you open your [email] client. at the top of your inbox is a new email. it's the one you've been waiting for."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "read",
+                        "email"
+                    ],
+                    "next": "outbox-pending"
+                }
+            ]
+        }
+    }
+}

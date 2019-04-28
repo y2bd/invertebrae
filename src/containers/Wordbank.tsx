@@ -34,7 +34,7 @@ function reducer(state: State, action: Action) {
 }
 
 // component
-interface WordbankProps {}
+interface WordbankProps { }
 
 const Wordbank: React.FC<WordbankProps> = React.memo(() => {
   const uselessOnFinish = React.useCallback(() => void 0, []);
@@ -42,13 +42,14 @@ const Wordbank: React.FC<WordbankProps> = React.memo(() => {
   const [collectionProps, dropRef] = dnd.useDrop<
     KeywordDragProps,
     { target: "wordbank" },
-    { hovering: boolean }
+    { hovering: boolean, canDrop: boolean }
   >({
     accept: "keyword",
     canDrop: item => {
       return item.source !== "wordbank";
     },
     collect: monitor => ({
+      canDrop: monitor.canDrop(),
       hovering: monitor.isOver()
     }),
     drop: item => {
@@ -65,7 +66,7 @@ const Wordbank: React.FC<WordbankProps> = React.memo(() => {
 
   return (
     <div
-      className={"Wordbank" + (collectionProps.hovering ? " hovering" : "")}
+      className={"Wordbank" + (collectionProps.hovering && collectionProps.canDrop ? " hovering" : "")}
       ref={dropRef}
     >
       {state.words.map(word => (

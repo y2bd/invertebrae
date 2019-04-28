@@ -1,3 +1,5 @@
 .Phrase {
-  color: #c9a05899;
+  color: #c9a058BB;
+
+  filter: drop-shadow(0px 8px 4px #593008);
 }
