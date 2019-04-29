@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from "react-dnd-html5-backend";
+import Preload from './Preload';
 
 ReactDOM.render(
     <DragDropContextProvider backend={HTML5Backend}>
-        <App />
+        <Preload />
     </DragDropContextProvider>, 
     document.getElementById('root')
 );

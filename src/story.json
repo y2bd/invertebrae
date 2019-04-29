@@ -4,7 +4,7 @@
         "welcome": {
             "name": "welcome",
             "body": [
-                "it is july 14th, 2013.",
+                "...it is july 14th, 2013.",
                 "you just got off of work, and are taking the subway back to your apartment. there aren't many people on your train car. this isn't uncommon, as your line travels far from the city.",
                 "your [watch] says the time is 6:13pm. last week you had flown back from a work trip, and lazily put off adjusting it for the time-zone change.",
                 "you should probably do that."
@@ -30,12 +30,12 @@
             "name": "adjust",
             "body": [
                 "you welcome your watch back home, adjusting it fowards to 9:13pm. you don't normally [find] yourself at work this late, but today though, it made sense. honestly, maybe you're lucky to leave even this late.",
-                "coincidentally, the subway reaches your stop fifteen minutes a[head] of schedule. you exit the station and begin walking [home]."
+                "coincidentally, the subway reaches your stop fifteen minutes ahead of schedule. you exit the station and begin [walk]ing [home]."
             ],
             "solutions": [
                 {
                     "answer": [
-                        "head",
+                        "walk",
                         "home"
                     ],
                     "next": "doorstep"
@@ -79,6 +79,13 @@
                         "door"
                     ],
                     "next": "return-home"
+                },
+                {
+                    "answer": [
+                        "opens",
+                        "door"
+                    ],
+                    "next": "return-home"
                 }
             ]
         },
@@ -86,8 +93,8 @@
             "name": "return-home",
             "body": [
                 "you are home.",
-                "you immediately throw your bag down onto the floor, and your sweater onto the pile of laundry amassing in your bathroom. you've lived here for months, you should probably buy a hamper already. there are many things you have no time for.",
-                "what you do have [time] for, however, is your [computer].",
+                "you immediately throw your bag down onto the floor, and your sweater onto the pile of laundry amassing in your bathroom. you can't explain why it's so messy. you've lived here for months, you should have bought a hamper already. there are many things you have no time for.",
+                "what you do have time for, however, is your [computer].",
                 "but where is it?"
             ],
             "solutions": [
@@ -103,7 +110,7 @@
         "outbox-pending": {
             "name": "outbox-pending",
             "body": [
-                "your laptop is in the kitchen. you had some emails to [read] while making coffee. they aren't work-related, not really any way.",
+                "your laptop is in the kitchen. you had some emails to [read] while making coffee this morning. they aren't work-related, not really any way.",
                 "your computer takes several minutes to boot. it's quite old, and wasn't even new when you had bought it. you should probably buy a new computer already.",
                 "computers are expensive. that's fine though, you'll have the money for one soon enough.",
                 "after it boots, you open your [email] client. at the top of your inbox is a new email. it's the one you've been waiting for."
@@ -125,7 +132,7 @@
                 "we appreciate you securing these documents for us. likewise, we will uphold our end of the deal.",
                 "please open the provided [attachment]. it will contain more details for the money transfer.",
                 "",
-                "i n v e r t e b r a e\"",
+                "i n v e r t e b r a e\"               ",
                 "...",
                 "wow, it really worked. what a relief."
             ],
@@ -136,6 +143,18 @@
                         "attachment"
                     ],
                     "next": "the-details"
+                },
+                {
+                    "answer": [
+                        "suspect"
+                    ],
+                    "next": "the-conclusion"
+                },
+                {
+                    "answer": [
+                        "doubt"
+                    ],
+                    "next": "the-conclusion"
                 }
             ]
         },
@@ -168,10 +187,17 @@
             "body": [
                 "wait, what?",
                 "after the barrage, your computer shuts down. you're not able to turn it back on.",
-                "the next morning, you receive two phone calls. one from your work's hr department, and another from your bank. neither have very pleasant news.",
+                "the next morning, you receive three phone calls. one from your work's hr department, another from your bank, and the last from the police. none have very pleasant news.",
                 "this is definitely not what you expected on that [subway] ride home. you were looking for an ending, but not this one."
             ],
             "solutions": [
+                {
+                    "answer": [
+                        "before",
+                        "subway"
+                    ],
+                    "next": "hint"
+                },
                 {
                     "answer": [
                         "figures"
@@ -179,6 +205,14 @@
                     "next": "nice"
                 }
             ]
+        },
+        "hint": {
+            "name": "hint",
+            "body": [
+                "it's too late, there's no point in remembering now.",
+                "it was too late the moment you left work and got on that subway."
+            ],
+            "solutions": []
         },
         "nice": {
             "name": "nice",
@@ -190,17 +224,475 @@
         "a-priori": {
             "name": "a-priori",
             "body": [
-                "run set watch again"
+                "the train [enter]s a run-down section of the tunnel, and the lights go out briefly. you can fix your watch later, right now is not the time.",
+                "after quickly glancing around the train for anyone else, you slump into an empty seat and rest your [head] in your palms as you remember what you did today.     ",
+                "today was exhausting. nerve-wracking.         ",
+                "you've been in your boss's [office] a few times, but never without her in it."
             ],
             "solutions": [
                 {
                     "answer": [
-                        "set",
-                        "watch"
+                        "enter",
+                        "office"
                     ],
-                    "next": "adjust"
+                    "next": "a-plan"
                 }
             ]
+        },
+        "a-plan": {
+            "name": "a-plan",
+            "body": [
+                "it was july 14th, 2013. your watch read 9:37am.",
+                "you work at the kind of place where most people eat [out] for lunch, so the office is usually empty. today was no exception.",
+                "there was no time for lunch today.       ",
+                "your boss's office is [upstairs]."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "head",
+                        "upstairs"
+                    ],
+                    "next": "well-stairs"
+                },
+                {
+                    "answer": [
+                        "walk",
+                        "upstairs"
+                    ],
+                    "next": "well-stairs"
+                },
+                {
+                    "answer": [
+                        "head",
+                        "out"
+                    ],
+                    "next": "small-details"
+                }
+            ]
+        },
+        "small-details": {
+            "name": "small-details",
+            "body": [
+                "you headed outside for a short smoke break.",
+                "it's nice, but inconsequential."
+            ],
+            "solutions": []
+        },
+        "well-stairs": {
+            "name": "well-stairs",
+            "body": [
+                "you trodged up the metal [stairwell]. supposedly this is the safest place in the office in case of an emergency. the way each step squeals like a dying cat [leave]s you with little confidence.",
+                "you checked your pocket for the [device] you had received in the mail. inspecting it, it looks sort of like a flash drive, save for a small button on the side.",
+                "they said all you needed to do was to plug it into a computer and [wait]. you didn't quite think that was how computers worked anymore, but you weren't going to [pretend] you were some hacker. that's someone else's job, apparently."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "pet",
+                        "cat"
+                    ],
+                    "next": "big-woof"
+                },
+                {
+                    "answer": [
+                        "leave",
+                        "stairwell"
+                    ],
+                    "next": "in-front"
+                }
+            ]
+        },
+        "big-woof": {
+            "name": "big-woof",
+            "body": [
+                "you bend over to pet the stairs. noticing you approaching, the staircase plummets away, taking you down with it.",
+                "as you fall to your death, you smirk at your correct assessment regarding stairwell safety.",
+                "you weren't right about many things, but at least you were right about this one.        ",
+                "...",
+                "maybe this was the ending you were looking for?"
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "figures"
+                    ],
+                    "next": "nice"
+                }
+            ]
+        },
+        "in-front": {
+            "name": "in-front",
+            "body": [
+                "you stumbled to your boss's office. there was no one immediately present, but you heard murmurs of others on the floor. not your boss though, you were fairly certain.",
+                "you saw her laptop sitting on the desk, [plug]ged into a wall outlet. the screen was shut.",
+                "you hesitated. you weren't sure if you should have just gone for it, or if there was anything else you should do first.",
+                "what did you end up doing?"
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "watch",
+                        "out"
+                    ],
+                    "next": "looksee"
+                },
+                {
+                    "answer": [
+                        "open",
+                        "computer"
+                    ],
+                    "next": "beneath-covers"
+                },
+                {
+                    "answer": [
+                        "plug",
+                        "device"
+                    ],
+                    "next": "too-easy"
+                },
+                {
+                    "answer": [
+                        "wait"
+                    ],
+                    "next": "pointless"
+                }
+            ]
+        },
+        "pointless": {
+            "name": "pointless",
+            "body": [
+                "just waiting would be pointless."
+            ],
+            "solutions": []
+        },
+        "beneath-covers": {
+            "name": "beneath-covers",
+            "body": [
+                "you slowly opened the laptop, greeted by a blue glow. the computer was logged in and had her email client open. so much for [security], surprised no one had broken in alre...      ",
+                "\"re: confidential security alert, unknown network traffic detec...\" read the subject line of the newest email.",
+                "what? how did they know already? you hadn't even done anything yet. is it possible that you weren't the only one sent one of these strange devices?",
+                "you felt the urgency growing even further, and wanted to get it over with as soon as possible." 
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "plug",
+                        "device"
+                    ],
+                    "next": "with-urgency"
+                }
+            ]
+        },
+        "looksee": {
+            "name": "looksee",
+            "body": [
+                "you peered slightly out into the hallway again, before [pull]ing back in the moment you noticed someone coming down the hall.",
+                "you hastily slid the door closed, and then ducked to the floor, waiting for the footsteps to pass.",
+                "...",
+                "they did. you were fine.",
+                "you should probably hurry up."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "plug",
+                        "device"
+                    ],
+                    "next": "with-caution"
+                }
+            ]
+        },
+        "too-easy": {
+            "name": "too-easy",
+            "body": [
+                "there was no time for anything else.",
+                "you plugged the device into the computer, without even verifying if the computer was on first. that's fine, these were hackers, right? surely it contained some computer code to turn the computer on, probably.",
+                "whatever.",
+                "you loomed nervously and waited. they had said it would take around five minutes to complete.",
+                "..."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "wait"
+                    ],
+                    "next": "big-boss-lady"
+                }
+            ]
+        },
+        "big-boss-lady": {
+            "name": "big-boss-lady",
+            "body": [
+                "\"hey! what are you doing? please do not come into my office without me here.\"",
+                "shit.", 
+                "swimming in your anxiety you didn't notice your boss walking down the hall, walking into her office, and walking up to you. she didn't look angry, more [confused].",
+                "\"u-uh, well, you see...\", was all you could [get] out at first.",
+                "but how did you actually get out?"
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "get",
+                        "confused"
+                    ],
+                    "next": "whoops"
+                },
+                {
+                    "answer": [
+                        "get",
+                        "out"
+                    ],
+                    "next": "whoops"
+                },
+                {
+                    "answer": [
+                        "stall"
+                    ],
+                    "next": "nice-try"
+                }
+            ]
+        },
+        "nice-try": {
+            "name": "nice-try",
+            "body": [
+                "...",
+                "...",
+                "\"yes? could you please tell me why you're here?\"",
+                "you got the feeling that this wasn't the right time to stall. maybe in a different time it would have worked."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "get",
+                        "confused"
+                    ],
+                    "next": "whoops"
+                },
+                {
+                    "answer": [
+                        "get",
+                        "out"
+                    ],
+                    "next": "whoops"
+                }
+            ]
+        },
+        "whoops": {
+            "name": "whoops",
+            "body": [
+                "\"i, uh, needed to meet with you for...and you weren't, er...sorrythisbadtimeileavenowgoodbye\"",
+                "you stammered out of her office, abandoning the device. you heard her call out to you, but definitely did not listen.",
+                "you found a bathroom on another floor and hid in an empty [stall]. with your face in your hands, you just sat there for hours. surely security would be coming for you shortly.",
+                "...they didn't. somehow that's even more unsatifying. you had a sinking feeling that nothing had changed.",
+                "six hours later, you take your face out of your hands and see you're back on the subway. it's your stop. you should probably [deboard]."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "deboard"
+                    ],
+                    "next": "doorstep"
+                }
+            ]
+        },
+        "with-urgency": {
+            "name": "with-urgency",
+            "body": [
+                "let's do this.",
+                "you jam the device into the computer. immediately various windows opened, all spurring about. you weren't sure what any of it meant, but you were surprised how theatrical it was.",
+                "they had said it would take around five minutes to complete, but you were only going to wait for two. if there were other people like you trying to steal company data, surely that would be enough.",
+                "you stared at the screen, distracted by the light show. so distracted that you don't even notice when your boss comes in.",
+                "...",
+                "\"hey! what the hell are you doing here?\"",
+                "you needed an excuse."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "pretend",
+                        "security"
+                    ],
+                    "next": "the-gambit"
+                }
+            ]
+        },
+        "the-gambit": {
+            "name": "the-gambit",
+            "body": [
+                "\"hi ma'am. i'm with the on-site security team. we're current doing a routine examination of all the computers on this floor, you might have saw the email.\"",
+                "\"oh...er, sure, i think I saw something like that.\"",
+                "\"i noticed you had left your computer unlocked on your desk. surely you know this is against corporate guidelines. anybody could have walked right in and accessed your data.\"",
+                "\"o-oh, did i? i'm sorry, i guess, i guess i forgot?\" she stammered, clearly feeling the [pressure].",
+                "you were amazed this worked."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "pressure"
+                    ],
+                    "next": "the-resolution"
+                }
+            ]
+        },
+        "the-resolution": {
+            "name": "the-resolution",
+            "body": [
+                "\"anyway, as this is a first offense we'll let you off the hook. just give me a couple seconds for my security dongle here to finish updating your anti-virus software\", you offer, gesturing to the device.",
+                "another awkward minute later, you removed the device, nod to your boss, and head out.",
+                "you were swelling with emotions. adrenaline from the gambit, joy from the success, and quite a bit of anger at how your boss didn't even recognize you.",
+                "it's fine, there's no time for your boss anymore.",
+                "you took out your phone, ready to [message] the [number] you were given."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "message",
+                        "number"
+                    ],
+                    "next": "signal"
+                }
+            ]
+        },
+        "signal": {
+            "name": "signal",
+            "body": [
+                "you opened the messaging app they had you download. they mentioned pretty firmly to only contact them through this app. perhaps they [suspect]ed things like email and text messages were unsecure. you don't really know.",
+                "\"got data, sending over now\"",
+                "and after a minute, \"great. we have started receiving it. we will contact you shortly with more details.\"",
+                "fantastic.",
+                "you left the office and, overjoyed with your success, spent the next several hours at your favorite bar. you briefly pass out in a drunken stupor. when you come to, you're back on the subway.",
+                "it's your stop. you should [disembark]."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "disembark"
+                    ],
+                    "next": "doorstep"
+                },
+                {
+                    "answer": [
+                        "deboard"
+                    ],
+                    "next": "doorstep"
+                }
+            ]
+        },
+        "with-caution": {
+            "name": "with-caution",
+            "body": [
+                "with the door closed, you should be a little safer. at least if anyone comes in, you'd hear them.",
+                "you inserted the device into the computer. with the screen closed, you weren't quite sure what it was doing, but you have faith in the widget.",
+                "they said it would take about five minutes, so there's nothing to do but wait.     ",
+                "...                ",
+                "your wait, however, was interrupted by the noise of the door handle. you had only moments to prepare yourself, but it's enough such that you don't immediately [stumble].",
+                "\"hey! what are you doing in here?\"",
+                "you needed more time."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "stumble"
+                    ],
+                    "next": "whoops"
+                },
+                {
+                    "answer": [
+                        "stall"
+                    ],
+                    "next": "business-papers"
+                }
+            ]
+        },
+        "business-papers": {
+            "name": "business-papers",
+            "body": [
+                "\"oh, i've been waiting for you! apologies, i thought i had scheduled a meeting around this time but i guess you hadn't seen it.\"",
+                "\"yeah, no, i didn't see anyt-\"",
+                "\"anyway, about the latest contract...\" and you talked business with your boss for the next twenty minutes. the initial confusion on her face gave way to the typical workplace apathy.",
+                "you stood between her and her computer, successfully hiding the [widget] from sight. there's a brief moment during the conversation where she turned away and looked out into the hall.",
+                "you should make your leave."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "pull",
+                        "widget"
+                    ],
+                    "next": "business-as-usual"
+                }
+            ]
+        },
+        "business-as-usual": {
+            "name": "business-as-usual",
+            "body": [
+                "as she looked away, you removed the device from her computer. you then thanked her for her input and hurried out the door. you saw her gesturing towards you to stop, the conversation clearly not over, but you're a busy person.",
+                "it's fine, there's no time for your boss right now.",
+                "you headed downstairs back to your desk and slumped into your chair, sighing with relief. you did it.",
+                "you took out your phone, ready to [contact] the [address] you were given."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "contact",
+                        "address"
+                    ],
+                    "next": "telegram"
+                }
+            ]
+        },
+        "telegram": {
+            "name": "telegram",
+            "body": [
+                "you opened the messaging app they had you download. they mentioned pretty firmly to only contact them through this app. perhaps they [doubt]ed the security of things like email and text messages. you don't really know.",
+                "\"got the data, sending over now\"",
+                "and after a minute, \"great. we have started receiving it. we will contact you shortly with more details.\"          ",
+                "to avoid suspicion, you worked the rest of the day. it was uneventful, but quite long and tiring. business as usual.",
+                "near the end of the day, you started to doze off. when you came to, you were back on the subway.",
+                "it's your stop. you should [take] [off]."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "take",
+                        "off"
+                    ],
+                    "next": "doorstep"
+                }
+            ]
+        },
+        "the-conclusion": {
+            "name": "the-conclusion",
+            "body": [
+                "no, wait, this isn't right.",
+                "they explicitly told you no contact through email. furthermore, what is this 'invertebrae'? they had never given you a name prior.",
+                "you delete the email. you don't know how or why you got this, but you feel like you might have gotten involved in something more complicated than you expected.",
+                "you don't have time for complications.",
+                "you send another message to them detailing [the] strange email, and wait for a reply.",
+                "of all things, this [end] you have time for."
+            ],
+            "solutions": [
+                {
+                    "answer": [
+                        "the",
+                        "end"
+                    ],
+                    "next": "the-end"
+                }
+            ]
+        },
+        "the-end": {
+            "name": "the-end",
+            "body": [
+                "i n v e r t e b r a e                 ",
+                "a short game by y2bd                    ",
+                "for ludum dare 44, \"your life is currency\"                  ",
+                "source at github.com/y2bd/invertebrae                       ",
+                "...                   ",
+                "thanks for making time"
+            ],
+            "solutions": []
         }
     }
 }

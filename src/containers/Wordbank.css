@@ -4,7 +4,7 @@
 }
 
 .Wordbank {
-  width: 120px;
+  width: 160px;
   height: 740px;
   padding: 32px;
   padding-top: 64px;
@@ -38,7 +38,39 @@
 }
 
 .Wordbank.hovering {
-  background-color: #c9a05811;
+  background-color: #c9a05822;
 
   transition: background-color 0.2s ease;
+}
+
+.Wordbank .Pagination {
+  opacity: 0;
+  margin-top: auto;
+
+  display: flex;
+  transition: opacity 0.2s ease;
+}
+
+.Wordbank .Previous, .Wordbank .Next {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.Wordbank .Next {
+  display: block;
+  margin-left: auto;
+}
+
+.Wordbank .Pagination.activated {
+  opacity: 1;
+}
+
+.Wordbank .Previous.activated, .Wordbank .Next.activated {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.Wordbank .Previous.activated:hover, .Wordbank .Next.activated:hover {
+  opacity: 1.0;
 }

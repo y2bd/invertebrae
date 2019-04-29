@@ -8,25 +8,46 @@ import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } 
 
 type State = typeof initialState;
 const initialState = {
-  words: ["set", "close"] as string[]
+  words: ["set", "close"] as string[],
+  page: 0
 };
 
 type Action =
   | { type: "addWord"; word: string }
-  | { type: "removeWord"; word: string };
+  | { type: "removeWord"; word: string }
+  | { type: "prevPage" }
+  | { type: "nextPage" }
+
+const perPage = 14;
+const pageCount = (state: State) => Math.floor(state.words.length / perPage) + 1;
 
 function reducer(state: State, action: Action) {
+  const pc = pageCount(state);
+
   switch (action.type) {
     case "addWord":
+      const newWords = [...state.words];
+      newWords.splice(state.page * perPage + perPage - 1, 0, action.word);
       return {
         ...state,
-        words: state.words.concat(action.word)
+        // always put it at the bottom of the current page
+        words: newWords
       };
     case "removeWord":
       return {
         ...state,
         // technically bug if you have two of the same word
         words: state.words.filter(word => word !== action.word)
+      };
+    case "prevPage":
+      return {
+        ...state,
+        page: Math.max(0, state.page - 1)
+      }
+    case "nextPage":
+      return {
+        ...state,
+        page: Math.min(pc - 1, state.page + 1)
       };
     default:
       return state;
@@ -64,12 +85,17 @@ const Wordbank: React.FC<WordbankProps> = React.memo(() => {
     [dispatch]
   );
 
+  const currentPageCount = pageCount(state);
+
+  const prevPage = React.useCallback(() => dispatch({ type: "prevPage" }), [dispatch]);
+  const nextPage = React.useCallback(() => dispatch({ type: "nextPage" }), [dispatch]);
+
   return (
     <div
       className={"Wordbank" + (collectionProps.hovering && collectionProps.canDrop ? " hovering" : "")}
       ref={dropRef}
     >
-      {state.words.map(word => (
+      {state.words.slice(perPage * state.page, perPage * state.page + perPage).map(word => (
         <Keyword
           key={word}
           text={word}
@@ -78,6 +104,16 @@ const Wordbank: React.FC<WordbankProps> = React.memo(() => {
           onConsumed={onConsumed}
         />
       ))}
+      <div className={"Pagination" + (currentPageCount > 1 ? " activated" : "")}>
+        <span 
+          className={"Previous" + (state.page > 0 ? " activated" : "")}
+          onClick={prevPage}
+        >{"<"}</span>
+        <span 
+          className={"Next" + (state.page < currentPageCount - 1 ? " activated" : "")}
+          onClick={nextPage}
+        >{">"}</span>
+      </div>
     </div>
   );
 });

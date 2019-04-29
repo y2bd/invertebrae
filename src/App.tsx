@@ -52,11 +52,29 @@ const App: React.FC = () => {
 
     setChapterGraph(newChapterGraph);
     setChapterPointer(chapterName);
+
+    if (chapterName === "the-details") {
+      setPlayBefore(true);
+      setTimeout(() => {
+        audioRef.current.pause();
+        audioRef.current.load();
+        audioRef.current.play();
+      });
+    }
   }, [chapterPointer, setChapterPointer, chapterGraph, setChapterGraph]);
 
   const goBefore = React.useCallback(() => {
     if (!canGoBefore) {
       return;
+    }
+
+    if (currentChapter.chapterName === "the-details") {
+      setPlayBefore(false);
+      setTimeout(() => {
+        audioRef.current.pause();
+        audioRef.current.load();
+        audioRef.current.play();
+      });
     }
 
     setChapterPointer(currentChapter.beforeName!);
@@ -70,8 +88,12 @@ const App: React.FC = () => {
     setShowHelp(false);
   }, [setShowHelp]);
 
+  const [playBefore, setPlayBefore] = React.useState(false);
+  const audioRef = React.useRef<HTMLAudioElement>(undefined!);
+
   return (
     <div className="App">
+      <audio ref={audioRef} src={playBefore ? "before.mp3" : "timeremaining.mp3"} loop autoPlay />
       <Frame>
         <div className="Navigation">
           <span 
@@ -108,7 +130,7 @@ const App: React.FC = () => {
           <p>the future does not cement the past.</p>
           <p>good luck.</p>
           <span 
-            className="CloseHelp" 
+            className="CloseHelp"   
             onClick={onCloseHelp}
           >I'LL TRY</span>
         </div>)}

@@ -2,11 +2,13 @@
   "name": "invertibrae",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://y2bd.me/invertebrae",
   "dependencies": {
     "@types/jest": "24.0.11",
     "@types/node": "11.13.8",
     "@types/react": "16.8.14",
     "@types/react-dom": "16.8.4",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dnd": "7.4.5",
     "react-dnd-html5-backend": "7.4.4",
@@ -18,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,7 +1,7 @@
 import * as React from "react";
 import useInterval from "../util/useInterval";
 
-export const DefaultDelay = 0;
+export const DefaultDelay = 25;
 
 export default function useTyping(
   text: string,
@@ -26,11 +26,11 @@ export default function useTyping(
 
     const nextText = text.slice(0, renderText.length + 1);
     if (nextText[nextText.length - 1] === ".") {
-      setDelay(DefaultDelay * 15);
+      setDelay(DefaultDelay * 20);
     }
 
     if (nextText[nextText.length - 1] === "?") {
-      setDelay(DefaultDelay * 15);
+      setDelay(DefaultDelay * 20);
     }
 
     if (nextText[nextText.length - 1] === ",") {
