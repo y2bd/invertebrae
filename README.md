@@ -23,6 +23,9 @@ so if you wish to add more pages and puzzles, or change existing ones, that shou
 
 If you want to change the initial words given, you can change them in `src/containers/Wordbank.tsx`. 
 
+**Warning**: one large deficit of the engine is that it does not support more than one instance of any word. If you end up in a situation
+where the player drags two of the same word into the word bank or the prompt, the game will behave unexpectedly and probably become unplayable. 
+
 ## Credits
 
 Game font was Mister Pixel, provided by http://www.velvetyne.fr/fonts/mr-pixel/, under the SIL Open Font License.
