@@ -28,4 +28,4 @@ where the player drags two of the same word into the word bank or the prompt, th
 
 ## Credits
 
-Game font was Mister Pixel, provided by http://www.velvetyne.fr/fonts/mr-pixel/, under the SIL Open Font License.
+Game font was Terminal Grotesque, provided by https://www.velvetyne.fr/fonts/terminal-grotesque/, under the SIL Open Font License.
