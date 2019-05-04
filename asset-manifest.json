@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/invertebrae/static/css/main.cf5db718.chunk.css",
+    "main.js": "/invertebrae/static/js/main.d443a13c.chunk.js",
+    "main.js.map": "/invertebrae/static/js/main.d443a13c.chunk.js.map",
+    "runtime~main.js": "/invertebrae/static/js/runtime~main.afbf7f8b.js",
+    "runtime~main.js.map": "/invertebrae/static/js/runtime~main.afbf7f8b.js.map",
+    "static/js/2.90d0a0bd.chunk.js": "/invertebrae/static/js/2.90d0a0bd.chunk.js",
+    "static/js/2.90d0a0bd.chunk.js.map": "/invertebrae/static/js/2.90d0a0bd.chunk.js.map",
+    "index.html": "/invertebrae/index.html",
+    "precache-manifest.96b9444f9c9ae9afb2443071e0f6f636.js": "/invertebrae/precache-manifest.96b9444f9c9ae9afb2443071e0f6f636.js",
+    "service-worker.js": "/invertebrae/service-worker.js",
+    "static/css/main.cf5db718.chunk.css.map": "/invertebrae/static/css/main.cf5db718.chunk.css.map",
+    "static/media/Wordbank.css": "/invertebrae/static/media/terminal-grotesque.473ea72a.ttf"
+  }
+}
