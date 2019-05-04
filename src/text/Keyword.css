@@ -1,10 +1,16 @@
 .Keyword {
+  color: #c9a058FF;
+
   cursor: move;
   display: inline-block;
 
   transition: transform 0.2s ease;
 
   filter: drop-shadow(0px 8px 4px #593008);
+}
+
+.Keyword.story {
+  font-weight: bold;
 }
 
 .Keyword:hover {

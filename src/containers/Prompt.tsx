@@ -5,6 +5,7 @@ import Keyword, { KeywordDragProps } from "../text/Keyword";
 import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from "react-dnd";
 import { arrayEquals } from "../util/arrayEq";
 import { Solution } from "../Story";
+import { MailboxContext, Receiver } from "../Mailbox";
 
 // state
 
@@ -90,6 +91,30 @@ const Prompt: React.FC<PromptProps> = React.memo(({ chapterName, solutions, onAc
       [onAccept, solutionNextChapter]
     );
 
+  const { sendMessage, register, unregister } = React.useContext(MailboxContext);
+
+  const onAddToPrompt: Receiver = React.useCallback(
+    message => {
+      if (message.payload.currentChapter === chapterName) {
+        dispatch({ type: "addWord", 
+          chapterName: message.payload.currentChapter, 
+          word: message.payload.word 
+        });
+      }
+    }, 
+    [chapterName, dispatch]
+  );
+
+  React.useEffect(() => {
+    register("addToPrompt", "prompt-" + chapterName, onAddToPrompt);
+    return () => unregister("addToPrompt", "prompt-" + chapterName);
+  }, [chapterName]);
+
+  const onSendToWordbox = React.useCallback((word: string) => {
+    dispatch({ type: "removeWord", chapterName, word });
+    sendMessage({ type: "addToWordbox", payload: word });
+  }, [chapterName, dispatch, sendMessage]);
+
   return (
     <div
       className={"Prompt" + (collectionProps.hovering && collectionProps.canDrop ? " hovering" : "")}
@@ -103,6 +128,7 @@ const Prompt: React.FC<PromptProps> = React.memo(({ chapterName, solutions, onAc
           location={"puzzle"}
           onFinish={uselessOnFinish}
           onConsumed={onConsumed}
+          onDoubleClick={onSendToWordbox}
         />
       ))}
       <span 

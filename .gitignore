@@ -10,6 +10,7 @@
 
 # production
 /build
+/build-itch
 
 # misc
 .DS_Store
