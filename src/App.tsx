@@ -132,8 +132,8 @@ const App: React.FC = () => {
         {showHelp && (<div className="Help">
           {showHuh 
             ? (<>
-                <p>move bold words from the story to the word bank on the right.</p>
-                <p>move words from the word bank to the prompt at the bottom.</p>
+                <p>drag bold words from the story to the word bank on the right.</p>
+                <p>drag words from the word bank to the prompt at the bottom.</p>
                 <p>if you've found a valid answer, you'll see the OK button light up.</p>
                 <p>you can always change your answers.</p>
               </>) 
