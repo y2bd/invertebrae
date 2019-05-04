@@ -62,7 +62,7 @@ const KeywordDraggable: React.FC<KeywordDraggableProps> = React.memo(props => {
 
   return (
     <span
-      className={"Keyword" + (props.consumed ? " consumed" : "")}
+      className={"Keyword" + (props.consumed ? " consumed" : "") + (props.location === "story" ? " story" : "")}
       ref={dragRef}
     >
       {props.renderText}

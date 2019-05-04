@@ -59,7 +59,7 @@ body {
   width: 660px;
   height: 500px;
 
-  background: black;
+  background: #030316CC;
 
   font-size: 2rem;
 
@@ -79,20 +79,29 @@ body {
 }
 
 .Help p {
-  margin-bottom: 16px;
+  display: block;
+  margin-bottom: 12px;
 }
 
 .Help em {
   letter-spacing: 0.2em;
 }
 
+.Help .Buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: auto;
+}
+
 .Help .CloseHelp {
   display: block;
 
   margin-top: auto;
-  justify-self: flex-end;
-  align-self: flex-end;
+  justify-self: end;
+  align-self: end;
 
+  margin-left: 16px;
   padding: 8px;
   outline-color: #c9a058;
   outline-width: 1px;

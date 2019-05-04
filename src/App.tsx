@@ -27,6 +27,7 @@ const App: React.FC = () => {
   const [chapterPointer, setChapterPointer] = React.useState(story.start);
 
   const [showHelp, setShowHelp] = React.useState(false);
+  const [showHuh, setShowHuh] = React.useState(false);
 
   const currentChapter = chapterGraph[chapterPointer];
   const canGoBefore = currentChapter.beforeName !== null;
@@ -84,9 +85,14 @@ const App: React.FC = () => {
     setShowHelp(true);
   }, [setShowHelp]);
 
+  const onHuh = React.useCallback(() => {
+    setShowHuh(!showHuh);
+  }, [showHuh, setShowHuh]);
+
   const onCloseHelp = React.useCallback(() => {
     setShowHelp(false);
-  }, [setShowHelp]);
+    setShowHuh(false);
+  }, [setShowHelp, setShowHuh]);
 
   const [playBefore, setPlayBefore] = React.useState(false);
   const audioRef = React.useRef<HTMLAudioElement>(undefined!);
@@ -124,15 +130,30 @@ const App: React.FC = () => {
           </div>
         )))}
         {showHelp && (<div className="Help">
-          <p>welcome into <em>invertebrae</em>.</p>
-          <p>while life may progress along with currency, you as an observer do not.</p>
-          <p>to the right stores knowledge, and below submits answers.</p> 
-          <p>the future does not cement the past.</p>
-          <p>good luck.</p>
+          {showHuh 
+            ? (<>
+                <p>move bold words from the story to the word bank on the right.</p>
+                <p>move words from the word bank to the prompt at the bottom.</p>
+                <p>if you've found a valid answer, you'll see the OK button light up.</p>
+                <p>you can always change your answers.</p>
+              </>) 
+            : (<>
+                <p>welcome into <em>invertebrae</em>.</p>
+                <p>while life may progress along with currency, you as an observer do not.</p>
+                <p>to the right stores knowledge, and below submits answers.</p> 
+                <p>the future does not cement the past.</p>
+                <p>good luck.</p>
+              </>)}
+          <div className="Buttons">
+          <span 
+            className="CloseHelp"   
+            onClick={onHuh}
+          >{showHuh ? "OH OK" : "HUH?"}</span>
           <span 
             className="CloseHelp"   
             onClick={onCloseHelp}
           >I'LL TRY</span>
+          </div>
         </div>)}
       </Frame>
       <Wordbank />
