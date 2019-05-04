@@ -3,6 +3,7 @@ import "./App.css";
 import Chapter from "./Chapter";
 import Frame from "./containers/Frame";
 import Wordbank from "./containers/Wordbank";
+import Mailbox from "./Mailbox";
 import { loadStory } from "./Story";
 
 const story = loadStory();
@@ -98,66 +99,68 @@ const App: React.FC = () => {
   const audioRef = React.useRef<HTMLAudioElement>(undefined!);
 
   return (
-    <div className="App">
-      <audio ref={audioRef} src={playBefore ? "before.mp3" : "timeremaining.mp3"} loop autoPlay />
-      <Frame>
-        <div className="Navigation">
-          <span 
-            className={"Before" + (canGoBefore ? " activated" : "")}
-            onClick={goBefore}
-          >
-            {"< BEFORE"}
-          </span>
-          <span
-            className={"HelpButton"}
-            onClick={onHelp}
-          >
-            {"?"}
-          </span>
-        </div>
-        { /* We render all chapters in queue to keep them in memory */ }
-        {(Object.keys(chapterGraph).map(chapterName => (
-          <div key={chapterName} style={{ 
-            display: chapterName === currentChapter.chapterName ? "flex" : "none",
-            flexDirection: "column",
-            height: "100%", 
-          }}>
-            <Chapter 
-              key={chapterName}
-              chapter={story.chapters[chapterName]} 
-              onNavigate={pushNewChapter}
-            />
+    <Mailbox>
+      <div className="App">
+        <audio ref={audioRef} src={playBefore ? "before.mp3" : "timeremaining.mp3"} loop autoPlay />
+        <Frame>
+          <div className="Navigation">
+            <span 
+              className={"Before" + (canGoBefore ? " activated" : "")}
+              onClick={goBefore}
+            >
+              {"< BEFORE"}
+            </span>
+            <span
+              className={"HelpButton"}
+              onClick={onHelp}
+            >
+              {"?"}
+            </span>
           </div>
-        )))}
-        {showHelp && (<div className="Help">
-          {showHuh 
-            ? (<>
-                <p>drag bold words from the story to the word bank on the right.</p>
-                <p>drag words from the word bank to the prompt at the bottom.</p>
-                <p>if you've found a valid answer, you'll see the OK button light up.</p>
-                <p>you can always change your answers.</p>
-              </>) 
-            : (<>
-                <p>welcome into <em>invertebrae</em>.</p>
-                <p>while life may progress along with currency, you as an observer do not.</p>
-                <p>to the right stores knowledge, and below submits answers.</p> 
-                <p>the future does not cement the past.</p>
-                <p>good luck.</p>
-              </>)}
-          <div className="Buttons">
-          <span 
-            className="CloseHelp"   
-            onClick={onHuh}
-          >{showHuh ? "OH OK" : "HUH?"}</span>
-          <span 
-            className="CloseHelp"   
-            onClick={onCloseHelp}
-          >I'LL TRY</span>
-          </div>
-        </div>)}
-      </Frame>
-      <Wordbank />
-    </div>
+          { /* We render all chapters in queue to keep them in memory */ }
+          {(Object.keys(chapterGraph).map(chapterName => (
+            <div key={chapterName} style={{ 
+              display: chapterName === currentChapter.chapterName ? "flex" : "none",
+              flexDirection: "column",
+              height: "100%", 
+            }}>
+              <Chapter 
+                key={chapterName}
+                chapter={story.chapters[chapterName]} 
+                onNavigate={pushNewChapter}
+              />
+            </div>
+          )))}
+          {showHelp && (<div className="Help">
+            {showHuh 
+              ? (<>
+                  <p>drag bold words from the story to the word bank on the right.</p>
+                  <p>drag (or double-click) words from the word bank to the prompt at the bottom.</p>
+                  <p>if you've found a valid answer, you'll see the OK button light up.</p>
+                  <p>you can always change your answers.</p>
+                </>) 
+              : (<>
+                  <p>welcome into <em>invertebrae</em>.</p>
+                  <p>while life may progress along with currency, you as an observer do not.</p>
+                  <p>to the right stores knowledge, and below submits answers.</p> 
+                  <p>the future does not cement the past.</p>
+                  <p>good luck.</p>
+                </>)}
+            <div className="Buttons">
+            <span 
+              className="CloseHelp"   
+              onClick={onHuh}
+            >{showHuh ? "OH OK" : "HUH?"}</span>
+            <span 
+              className="CloseHelp"   
+              onClick={onCloseHelp}
+            >I'LL TRY</span>
+            </div>
+          </div>)}
+        </Frame>
+        <Wordbank currentChapter={currentChapter.chapterName} />
+      </div>
+    </Mailbox>
   );
 };
 

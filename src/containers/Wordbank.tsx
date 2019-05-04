@@ -3,6 +3,7 @@ import "./Wordbank.css";
 import Keyword, { KeywordDragProps } from "../text/Keyword";
 
 import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from "react-dnd";
+import { MailboxContext, Receiver } from "../Mailbox";
 
 // state
 
@@ -55,9 +56,11 @@ function reducer(state: State, action: Action) {
 }
 
 // component
-interface WordbankProps { }
+interface WordbankProps { 
+  readonly currentChapter: string;
+}
 
-const Wordbank: React.FC<WordbankProps> = React.memo(() => {
+const Wordbank: React.FC<WordbankProps> = React.memo(({ currentChapter }) => {
   const uselessOnFinish = React.useCallback(() => void 0, []);
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [collectionProps, dropRef] = dnd.useDrop<
@@ -90,6 +93,19 @@ const Wordbank: React.FC<WordbankProps> = React.memo(() => {
   const prevPage = React.useCallback(() => dispatch({ type: "prevPage" }), [dispatch]);
   const nextPage = React.useCallback(() => dispatch({ type: "nextPage" }), [dispatch]);
 
+  const { sendMessage, register, unregister } = React.useContext(MailboxContext);
+
+  const onAddToWordbox: Receiver = React.useCallback(message => dispatch({ type: "addWord", word: message.payload }), [dispatch]);
+  React.useEffect(() => {
+    register("addToWordbox", "wordbox", onAddToWordbox);
+    return () => unregister("addToWordbox", "wordbox");
+  }, []);
+
+  const onSendToPrompt = React.useCallback((word: string) => {
+    dispatch({ type: "removeWord", word });
+    sendMessage({ type: "addToPrompt", payload: { word, currentChapter } });
+  }, [dispatch, currentChapter, sendMessage]);
+
   return (
     <div
       className={"Wordbank" + (collectionProps.hovering && collectionProps.canDrop ? " hovering" : "")}
@@ -102,6 +118,7 @@ const Wordbank: React.FC<WordbankProps> = React.memo(() => {
           location={"wordbank"}
           onFinish={uselessOnFinish}
           onConsumed={onConsumed}
+          onDoubleClick={onSendToPrompt}
         />
       ))}
       <div className={"Pagination" + (currentPageCount > 1 ? " activated" : "")}>
