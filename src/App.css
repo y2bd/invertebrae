@@ -1,3 +1,11 @@
+body {
+  overflow: hidden;
+}
+
+.root {
+  overflow: hidden;
+}
+
 .App {
   width: 100vw;
   height: 100vh;
@@ -99,6 +107,49 @@
 
 .Help .CloseHelp:active, .Help .CloseHelp:active {
   background: #c9a05866;
+}
+
+@media only screen and (max-width: 1400px), only screen and (max-height: 905px) {
+  #root {
+    transform-origin: center;
+    transform: scale(0.93);
+  }
+
+  * {
+    outline-width: 2px !important;
+  }
+
+  .Help {
+    outline-style: solid !important;
+  }
+}
+
+@media only screen and (max-width: 1300px), only screen and (max-height: 820px) {
+  #root {
+    transform-origin: center;
+    transform: scale(0.85);
+  }
+}
+
+@media only screen and (max-width: 1200px), only screen and (max-height: 740px) {
+  #root {
+    transform-origin: center;
+    transform: scale(0.78);
+  }
+}
+
+@media only screen and (max-width: 1100px), only screen and (max-height: 665px) {
+  #root {
+    transform-origin: center;
+    transform: scale(0.69);
+  }
+}
+
+@media only screen and (max-width: 1000px), only screen and (max-height: 580px) {
+  #root {
+    transform-origin: center;
+    transform: scale(0.62);
+  }
 }
 
 /* reset */

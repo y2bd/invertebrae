@@ -5,6 +5,7 @@
 
 .Wordbank {
   width: 160px;
+  min-width: 160px;
   height: 740px;
   padding: 32px;
   padding-top: 64px;

@@ -36,12 +36,13 @@
   display: inline-block;
   padding: 0 8px;
   margin-left: auto;
+  margin-right: 1px;
 
   background: black;
 
-  border-color: #c9a058;
-  border-width: 1px;
-  border-style: solid;
+  outline-color: #c9a058;
+  outline-width: 1px;
+  outline-style: solid;
 
   opacity: 0.4;
 
@@ -61,3 +62,8 @@
   background: #c9a05844;
 }
 
+@media only screen and (max-width: 1400px), only screen and (max-height: 900px) {
+  .Prompt {
+    border-bottom-width: 2px !important;
+  }
+}
